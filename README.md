@@ -9,7 +9,7 @@ When you finish, add your names and a demo video link here, then submit one link
 
 ---
 
-## Project Overview
+### Project Overview
 
 You will begin with a **pre-built login and authentication system**. Your job is to **extend this project into a full CRUD web application** using Flask and a database.
 
@@ -24,7 +24,7 @@ Each user should only be able to access and modify **their own data**.
 
 ---
 
-## Helpful Links for This Unit:
+### Helpful Links for This Unit:
 - Flask Documentation: https://flask.palletsprojects.com/en/2.3.x/
 - SQLite Documentation: https://www.sqlite.org/docs.html
 - Bcrypt Documentation: https://pypi.org/project/bcrypt/
@@ -33,7 +33,7 @@ Each user should only be able to access and modify **their own data**.
 
 ---
 
-## Project Requirements:
+### Project Requirements:
 
 ---
 
@@ -129,7 +129,7 @@ Each user should only be able to access and modify **their own data**.
 
 ---
 
-## Optional Bonus (+10 pts each)
+### Optional Bonus (+10 pts each)
 - Add search, filtering, or sorting
 - Improve UI with CSS
 - Add timestamps or ordering (newest first)
@@ -137,7 +137,7 @@ Each user should only be able to access and modify **their own data**.
 
 ---
 
-## Key Focus of This Project
+### Key Focus of This Project
 - You are no longer **building authentication**
 - You are **building a functional database-driven application**
 
