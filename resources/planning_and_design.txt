@@ -5,34 +5,70 @@ APP PLANNING & DESIGN
 1. PROJECT IDEA
 -------------------------
 - What is your app called?
+Notes of the Day
 - What type of app is it? (journal, listings, notes, etc.)
+Notes app
 - What will users use your app for?
+Taking notes
 
 2. DATA MODEL (WHAT ARE YOU STORING?)
 -------------------------
 - What is a single “entry” in your app?
+A page of notes, kind of like a google docs document.
 - What fields will each entry have? (title, content, date, etc.)
+Title, date, text
 - How will entries be connected to a user?
+In the database, an owner will be assigned to each note
 
 3. CORE FEATURES (CRUD)
 -------------------------
 - What can users CREATE?
+Users can create different note documents
 - What will they see on the main page (READ)?
+Users will see a home page that shows all of their different notes in order of most recently edited, kind of like a google docs home page.
 - What can users EDIT (UPDATE)?
+Users can edit the data inside of a notes document, and the name of the note.
 - What can users DELETE?
+Users can delete a note, and delete text inside of a note.
 
 4. USER FLOW
 -------------------------
 - What happens after a user logs in?
+After a user logs in, they can see all of their notes. (Before logging in, they will be on the home page with no notes available.)
 - What pages/routes will your app need? (dashboard, create, edit, etc.)
+Pages:
+- Home page
+- Log-in page
+- Register page
+- Single note page
+
+Routes:
+- GET (read)
+- POST (create)
+- PATCH (update/edit)
+- DELETE
+
 - Describe a typical user experience from login → using your app
+
+1. User finds home page
+2. *optional* user creates an account if they do not have one
+3. User logs in
+4. User is redirected to home page where they see their notes
+5. User can click on any of their notes
 
 5. USER EXPERIENCE (UX)
 -------------------------
 - How should your app look and feel?
+It should look pretty basic and resemble google docs.
 - How will users navigate between pages?
+Users will navigate through pages by clicking on a log-in button or right clicking on their doc and hitting "edit".
 - How will entries be displayed (list, cards, etc.)?
+Entries will be displayed as cards on the home page once you login
 
 6. OPTIONAL FEATURES
 -------------------------
 - What extra features might you add? (search, tags, sorting, etc.)
+
+- Search feature
+- List entries in order of recently edited
+- More options to edit your notes (images, tables, fonts, character sizes, colors, etc.)
