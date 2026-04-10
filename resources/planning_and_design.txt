@@ -72,3 +72,7 @@ Entries will be displayed as cards on the home page once you login
 - Search feature
 - List entries in order of recently edited
 - More options to edit your notes (images, tables, fonts, character sizes, colors, etc.)
+
+Data Base Handeling
+already have secure stuff for passwords
+name conects itself to associated ecrytpted password
