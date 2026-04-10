@@ -9,10 +9,10 @@ def init_db2():
     conn = get_db2()
     # Add your new table between lines 15 & 16.
     conn.execute("""
-        CREATE TABLE IF NOT EXISTS users (
+        CREATE TABLE IF NOT EXISTS entries (
             name TEXT PRIMARY KEY,
             user TEXT,
-            open TEXT
+            timestamp TEXT
         )
     """)
     conn.commit()
