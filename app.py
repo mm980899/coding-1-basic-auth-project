@@ -4,6 +4,7 @@
 
 from flask import Flask, request, redirect, url_for, render_template, session
 from database import get_db, init_db
+from notes_database import get_db2, init_db2
 import bcrypt
 import re
 
@@ -11,6 +12,7 @@ app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
 init_db()
+init_db2()
 
 # ---------- PASSWORD VALIDATION ----------
 def is_valid_password(password):
