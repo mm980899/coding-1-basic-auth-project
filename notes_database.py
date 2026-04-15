@@ -12,7 +12,7 @@ def init_db2():
         CREATE TABLE IF NOT EXISTS entries (
             name TEXT PRIMARY KEY,
             user TEXT,
-            timestamp TEXT
+            timestamp INTEGER
         )
     """)
     conn.commit()
