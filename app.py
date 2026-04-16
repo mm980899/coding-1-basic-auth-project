@@ -124,7 +124,7 @@ def create():
 
         # TODO: Insert into entries table
         # IMPORTANT: include session["user"]
-
+ 
         # TODO: Commit and close
 
         return redirect(url_for("dashboard"))

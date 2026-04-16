@@ -7,18 +7,18 @@
 <h3>Welcome, {{ username }}!</h3>
 
 <!-- TODO: Add a button or link to create a new entry -->
-<a href="/logout"><button>Logout</button></a>
+<a href="/create"><button>create</button></a>
 <br><br>
 
 <!-- TODO: Loop through entries passed from Flask -->
 <!-- The variable "entries" will come from your Flask route -->
 <!-- Example structure: -->
 
-<!--
+!--
 {% for entry in entries %}
     <div>
-        <h3>{{ entry['title'] }}</h3>
-        <p>{{ entry['content'] }}</p>
+        <h3>{{ entry['name'] }}</h3>
+        <p>{{ entry['user'] }}</p>
 
         <!-- TODO: Add Edit link -->
         <!-- Example: /edit/{{ entry['id'] }} -->
@@ -37,6 +37,6 @@
 <br>
 
 <!-- TODO: Add a logout button -->
-<a href="/logout"><button>Logout</button></a>
+<a href="/logout"><button>logout/button></a>
 
 {% endblock %}
