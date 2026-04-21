@@ -25,6 +25,10 @@ def seed_database():
         ("bob", "SecurePass456@"),
         ("charlie", "MyPassword789#"),
     ]
+    sample_data = [(1 , "title" ,"text",  1776442785),
+    (2 , "title3" ,"pluh",  1776442785),
+    (3 , "title6" ,"lorim ipsum?",  1776442785)]
+    
     
     try:
         for username, password in sample_users:
@@ -41,18 +45,26 @@ def seed_database():
     except Exception as e:
         conn.rollback()
         print(f"Error: {e}")
+    try:
+        for id, title, text, timestamp in sample_data:
+            hashed_pw = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+            conn.execute(
+                "INSERT INTO notes (id, title, text, timestamp) VALUES (?, ?, ? ,?)",
+                (id , title, text, timestamp)
+            )
+            print(f"Created text: {id}")
+
+        conn.commit()
+        print("\nDatabase seeding complete!")
     
+    except Exception as e:
+        conn.rollback()
+        print(f"Error: {e}")
+
     finally:
         conn.close()
 
-    init_db2()
 
-    conn = get_db2
-
-    # Sample data with owner, name of notes, and last edited date
-    sample_data = [
-        ("Note", "liljit", 1970-01-01 00:00:01)
-    ]
 
 if __name__ == "__main__":
     seed_database()
