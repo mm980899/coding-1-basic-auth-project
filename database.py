@@ -19,7 +19,7 @@ def init_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT,
             text TEXT,
-            timestamp INTEGER
+            timestamp TEXT DEFAULT CURRENT_TIMESTAMP
         )
     """)
     conn.commit()
