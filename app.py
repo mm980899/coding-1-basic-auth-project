@@ -4,7 +4,6 @@
 
 from flask import Flask, request, redirect, url_for, render_template, session
 from database import get_db, init_db
-from notes_database import get_db2, init_db2
 import bcrypt
 import re
 
@@ -12,7 +11,6 @@ app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
 init_db()
-init_db2()
 
 # ---------- PASSWORD VALIDATION ----------
 def is_valid_password(password):
@@ -84,12 +82,12 @@ def secret():
         return redirect(url_for("login"))
 
     # TODO: Connect to the database
-    conn = get_db2()
+    conn = get_db()
 
     # TODO: Get all entries that belong to the logged-in user
     # Example:
     entries = conn.execute(
-        "SELECT * FROM notes WHERE user=?",
+        "SELECT * FROM notes WHERE owner=?",
         (session["user"],)
     ).fetchall()
 
