@@ -16,8 +16,8 @@
 
 {% for entry in entries %}
     <div>
-        <h3>{{ entry['name'] }}</h3>
-        <p>{{ entry['user'] }}</p>
+        <h3>{{ entry['title'] }}</h3>
+        <p>{{ entry['text'] }}</p>
 
         <!-- TODO: Add Edit link -->
         <p>/edit/{{ entry['id'] }}</p>
@@ -41,6 +41,6 @@
 <br>
 
 <!-- TODO: Add a logout button -->
-<a href="/logout"><button>logout/button></a>
+<a href="/logout"><button>logout</button></a>
 
 {% endblock %}

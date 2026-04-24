@@ -87,9 +87,12 @@ def secret():
     # TODO: Get all entries that belong to the logged-in user
     # Example:
     entries = conn.execute(
-        "SELECT * FROM notes WHERE owner=?",
+        "SELECT * FROM notes WHERE user=?",
         (session["user"],)
     ).fetchall()
+
+    print(session["user"])
+    print(entries)
 
     # TODO: Close the connection
     conn.close()
