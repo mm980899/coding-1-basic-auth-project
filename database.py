@@ -17,6 +17,7 @@ def init_db():
     conn.execute("""
         CREATE TABLE IF NOT EXISTS notes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
+            owner TEXT,
             title TEXT,
             text TEXT,
             timestamp TEXT DEFAULT CURRENT_TIMESTAMP

@@ -25,9 +25,9 @@ def seed_database():
         ("bob", "SecurePass456@"),
         ("charlie", "MyPassword789#"),
     ]
-    sample_data = [(1 , "title" ,"text",  1776442785),
-    (2 , "title3" ,"pluh",  1776442785),
-    (3 , "title6" ,"lorim ipsum?",  1776442785)]
+    sample_data = [(1 , "title" , "casey", "text",  1776442785),
+    (2 , "title3" , "kris", "pluh",  1776442785),
+    (3 , "title6" , "max", "lorim ipsum?",  1776442785)]
     
     
     try:
@@ -46,11 +46,11 @@ def seed_database():
         conn.rollback()
         print(f"Error: {e}")
     try:
-        for id, title, text, timestamp in sample_data:
+        for id, owner, title, text, timestamp in sample_data:
             hashed_pw = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
             conn.execute(
-                "INSERT INTO notes (id, title, text, timestamp) VALUES (?, ?, ? ,?)",
-                (id , title, text, timestamp)
+                "INSERT INTO notes (id, owner, title, text, timestamp) VALUES (?, ?, ?, ? ,?)",
+                (id , owner, title, text, timestamp)
             )
             print(f"Created text: {id}")
 
