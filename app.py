@@ -120,13 +120,30 @@ def create():
 
     if request.method == "POST":
         # TODO: Get form data (title, content)
+        user = session["user"]
+        title = request.form["title"].strip()
+        content = request.form["content"].strip()
 
         # TODO: Connect to database
+        conn = get_db()
 
         # TODO: Insert into entries table
         # IMPORTANT: include session["user"]
+        try:
+            conn.execute(
+                "INSERT INTO notes (user, title, text) VALUES (?, ?, ?)",
+                (user, title, content)
+            )
+            conn.commit()
+
+                return redirect(url_for("login"))
+        except:
+            conn.rollback()
+            error = "Note already exists or error occurred"
  
         # TODO: Commit and close
+        finally:
+            conn.close()
 
         return redirect(url_for("dashboard"))
 
