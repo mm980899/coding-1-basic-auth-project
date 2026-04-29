@@ -194,6 +194,7 @@ def delete(id):
         return redirect(url_for("login"))
 
     # TODO: Connect to database
+    conn = get_db()
 
     # TODO: Delete entry WHERE id AND user
 
