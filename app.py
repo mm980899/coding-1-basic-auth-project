@@ -188,7 +188,7 @@ def edit(id):
 # - Redirect back to dashboard
 
 
-@app.route("/delete/<int:id>", methods = ["GET , "POST""] )
+@app.route("/delete/<int:id>", methods =["GET" , "POST"])
 def delete(id):
     if "user" not in session:
         return redirect(url_for("login"))
