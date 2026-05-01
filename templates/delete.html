@@ -9,9 +9,16 @@
 
 <!-- TODO: Show entry title or content -->
 
+<h3>{{ entry['title'] }}</h3>
+<p>{{ entry['content'] }}</p>
+
 <!-- TODO: Add a button to confirm delete -->
 
+<form method="POST">
+    <button type="submit" style="background-color: red; color: white;"> Yes, Delete Note</button>
+</form>
+
 <!-- TODO: Add a cancel link back to dashboard -->
-<a href="/">Back to login</a>
-<p class="error">{{ error }}</p>
+ 
+<a href="/">Cancel</a>
 {% endblock %}
