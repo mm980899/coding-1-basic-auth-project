@@ -20,10 +20,10 @@
         <p>{{ entry['text'] }}</p>
 
         <!-- TODO: Add Edit link -->
-        <p>/edit/{{ entry['id'] }}</p>
+        <a href="/edit"><button style="background-color: lightblue;">edit</button></a>
 
         <!-- TODO: Add Delete link -->
-        <p>/delete/{{ entry['id'] }}</p>
+        <a href="/delete"><button style="background-color: indianred;">delete</button></a>
 
     </div>
     <hr>
@@ -41,6 +41,6 @@
 <br>
 
 <!-- TODO: Add a logout button -->
-<a href="/logout"><button>logout</button></a>
+<a href="/logout"><button style="background-color: gray;">logout</button></a>
 
 {% endblock %}
