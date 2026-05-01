@@ -135,7 +135,7 @@ def create():
             )
             conn.commit()
 
-            return redirect(url_for("login"))
+            return redirect(url_for("dashboard"))
         except:
             conn.rollback()
             error = "Note already exists or error occurred"
@@ -192,35 +192,32 @@ def edit(id):
 def delete(id):
     if "user" not in session:
         return redirect(url_for("login"))
-    # if request.method == "POST":
-    #     user = session["user"]
-    #     id = request.form["id"].strip()
-    #     content = request.form["content"].strip()
-    # TODO: Connect to database
+    
     conn = get_db()
     entry = conn.execute(
-        "SELECT * FROM notes WHERE id=?",
-        (session["user"],)
+        "SELECT * FROM notes WHERE id=? AND user=?",
+        (id, session["user"])
     ).fetchone()
+    
     if not entry:
-        return "entry not found"
+        conn.close()
+        return "Entry not found or not authorized"
+    
     if request.method == "POST":
-        try: 
-            con.execute(
-                "DELETE FROM notes WHERE id=?",
-                (id,)
+        try:
+            conn.execute(
+                "DELETE FROM notes WHERE id=? AND user=?",
+                (id, session["user"])
             )
             conn.commit()
         except:
             conn.rollback()
         finally:
             conn.close()
-            return redirect(url_for("dashboard"))
+        return redirect(url_for("dashboard"))
+    
     conn.close()
     return render_template("delete.html", entry=entry)
-    # TODO: Delete entry WHERE id AND user
-
-    # TODO: Commit and close
 
 
 
