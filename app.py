@@ -38,7 +38,7 @@ def login():
 
         if user and bcrypt.checkpw(password.encode("utf-8"), user["password"]):
             session["user"] = username
-            return redirect(url_for("secret"))
+            return redirect(url_for("dashboard"))
         else:
             error = "Incorrect username or password"
 
@@ -76,7 +76,7 @@ def register():
     return render_template("register.html", error=error)
 
 @app.route("/dashboard")
-def secret():
+def dashboard():
 
     if "user" not in session:
         return redirect(url_for("login"))
@@ -154,7 +154,6 @@ def create():
 # - Show it in a form
 # - Update the database on submit
 
-"""
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
 def edit(id):
     if "user" not in session:
@@ -179,7 +178,7 @@ def edit(id):
         return redirect(url_for("dashboard"))
 
     return render_template("edit.html", entry=entry)
-"""
+
 
 # ---------- DELETE ----------
 # TODO: Create a route like /delete/<id>
@@ -229,4 +228,4 @@ def logout():
 
 # ---------- RUN ----------
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=5001, debug=True)
