@@ -218,8 +218,45 @@ def delete(id):
     conn.close()
     return render_template("delete.html", entry=entry)
 
-
-
+@app.route("/gamble/<int:id>", methods =["GET" , "POST"])
+def gamble(id):
+    if "user" not in session:
+        return redirect(url_for("login"))
+    
+    conn = get_db()
+    entry = conn.execute(
+        "SELECT * FROM notes WHERE id=? AND user=?",
+        (id, session["user"])
+    ).fetchone()
+    
+    if not entry:
+        conn.close()
+        return "Entry not found or not authorized"
+    
+    if request.method == "POST":
+        x = randint(1, 101)
+        if x % 2 == 0:
+            try:
+                conn.execute(
+                    "DELETE FROM notes WHERE id=? AND user=?",
+                    (id, session["user"])
+                )
+                conn.commit()
+            except:
+                conn.rollback()
+            finally:
+                conn.close()
+            return redirect(url_for("dashboard"))
+        if x == 100:
+            conn.execute(
+                "DELETE * FROM notes WHERE user=?",
+                (session["user"])
+            )
+        else:
+            return redirect(url_for("dashboard"))
+    
+    conn.close()
+    return render_template("delete.html", entry=entry)
 
 @app.route("/logout")
 def logout():
