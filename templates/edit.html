@@ -8,13 +8,13 @@
 <form method="POST">
 
     <!-- TODO: Pre-fill title using entry data -->
-
+    <input name="title" placeholder="Title" value="{{ entry['title'] }}"><br>
     <!-- TODO: Pre-fill content using entry data -->
-
+    <input name="text" placeholder="Title" value="{{ entry['text'] }}"><br>
     <!-- TODO: Add submit button -->
-
+  <button type="submit">Update Entry</button>
 </form>
 
 <!-- TODO: Add a link back to dashboard -->
-
+<a href="/dashboard">Back to dashboard</a>
 {% endblock %}

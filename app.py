@@ -158,25 +158,37 @@ def create():
 def edit(id):
     if "user" not in session:
         return redirect(url_for("login"))
-
-    # TODO: Connect to database
-
-    # TODO: Get entry WHERE id AND user
-    # This prevents editing other users' data
-
-    # if not entry:
-    #     return "Not allowed"
-
+    
+    conn = get_db()
+    entry = conn.execute(
+        "SELECT * FROM notes WHERE id=? AND user=?",
+        (id, session["user"])
+    ).fetchone()
+    
+    if not entry:
+        conn.close()
+        return "Entry not found or not authorized"
+    
     if request.method == "POST":
-        # TODO: Get updated form data
-
-        # TODO: Update database
-        # IMPORTANT: include id AND session["user"]
-
-        # TODO: Commit and close
-
-        return redirect(url_for("dashboard"))
-
+        title = request.form["title"].strip()
+        text = request.form["text"].strip()
+        if not title or not text:
+            error = "Feilds can not be empty!"
+        else:
+            try:
+                conn.execute(
+                    "UPDATE notes SET title=?, text=? WHERE id=? AND user=?",
+                    (title, text, id, session["user"])
+                )
+                conn.commit()
+                conn.close()
+                return redirect(url_for("dashboard"))
+            except:
+                conn.rollback()
+                conn.close()
+                return "Error updating entries"
+    
+    conn.close()
     return render_template("edit.html", entry=entry)
 
 

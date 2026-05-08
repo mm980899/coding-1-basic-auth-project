@@ -20,7 +20,7 @@
         <p>{{ entry['text'] }}</p>
 
         <!-- TODO: Add Edit link -->
-        <a href="/edit"><button style="background-color: lightblue;">edit</button></a>
+         <a href="{{ url_for('edit', id=entry['id']) }}"><button style="background-color: lightblue;">edit</button></a>
 
         <!-- TODO: Add Delete link -->
         <a href="{{ url_for('delete', id=entry['id']) }}"><button style="background-color: indianred;">delete</button></a>
