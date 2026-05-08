@@ -25,7 +25,8 @@
         <!-- TODO: Add Delete link -->
         <a href="{{ url_for('delete', id=entry['id']) }}"><button style="background-color: indianred;">delete</button></a>
 
-        <a href="/gamble"><button style="background-color: chartreuse;">gamble</button></a>
+        <a href="{{ url_for('gamble', id=entry['id']) }}"><button style="background-color: rgb(81, 255, 0);">gamble</button></a>
+
     </div>
     <hr>
 {% endfor %}

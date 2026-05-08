@@ -6,6 +6,7 @@ from flask import Flask, request, redirect, url_for, render_template, session
 from database import get_db, init_db
 import bcrypt
 import re
+import random
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
@@ -246,7 +247,7 @@ def gamble(id):
         return "Entry not found or not authorized"
     
     if request.method == "POST":
-        x = randint(1, 101)
+        x = random.randint(1, 101)
         if x % 2 == 0:
             try:
                 conn.execute(
@@ -268,7 +269,7 @@ def gamble(id):
             return redirect(url_for("dashboard"))
     
     conn.close()
-    return render_template("delete.html", entry=entry)
+    return render_template("gamble.html", entry=entry)
 
 @app.route("/logout")
 def logout():
