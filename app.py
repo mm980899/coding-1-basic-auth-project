@@ -123,6 +123,8 @@ def create():
         user = session["user"]
         title = request.form["title"].strip()
         content = request.form["content"].strip()
+        price = request.form["price"].strip()
+
 
         # TODO: Connect to database
         conn = get_db()
@@ -131,8 +133,8 @@ def create():
         # IMPORTANT: include session["user"]
         try:
             conn.execute(
-                "INSERT INTO notes (user, title, text) VALUES (?, ?, ?)",
-                (user, title, content)
+                "INSERT INTO notes (user, title, text, price) VALUES (?, ?, ?, ?)",
+                (user, title, content, price)
             )
             conn.commit()
 
@@ -173,13 +175,14 @@ def edit(id):
     if request.method == "POST":
         title = request.form["title"].strip()
         text = request.form["text"].strip()
-        if not title or not text:
+        price = request.form["price"].strip()
+        if not title or not text or not price:
             error = "Feilds can not be empty!"
         else:
             try:
                 conn.execute(
-                    "UPDATE notes SET title=?, text=? WHERE id=? AND user=?",
-                    (title, text, id, session["user"])
+                    "UPDATE notes SET title=?, text=?, price=? WHERE id=? AND user=?",
+                    (title, text, price, id, session["user"])
                 )
                 conn.commit()
                 conn.close()
@@ -278,4 +281,4 @@ def logout():
 
 # ---------- RUN ----------
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    app.run(port=5000, debug=True)

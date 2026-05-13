@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Edit Entry</h2>
+<h2>Edit Bill</h2>
 
 <!-- TODO: Create a form that sends a POST request -->
 
@@ -11,6 +11,8 @@
     <input name="title" placeholder="Title" value="{{ entry['title'] }}"><br>
     <!-- TODO: Pre-fill content using entry data -->
     <input name="text" placeholder="Title" value="{{ entry['text'] }}"><br>
+    <input name="price" placeholder="Price" value="{{ entry['price'] }}"><br>
+
     <!-- TODO: Add submit button -->
   <button type="submit">Update Entry</button>
 </form>

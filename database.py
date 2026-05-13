@@ -20,6 +20,7 @@ def init_db():
             user TEXT,
             title TEXT,
             text TEXT,
+            price TEXT,
             timestamp TEXT DEFAULT CURRENT_TIMESTAMP
         )
     """)

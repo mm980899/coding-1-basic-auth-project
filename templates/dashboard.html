@@ -7,7 +7,7 @@
 <h3>Welcome, {{ username }}!</h3>
 
 <!-- TODO: Add a button or link to create a new entry -->
-<a href="/create"><button>create</button></a>
+<a href="/create"><button>create bill</button></a>
 <br><br>
 
 <!-- TODO: Loop through entries passed from Flask -->
@@ -16,16 +16,19 @@
 
 {% for entry in entries %}
     <div>
+        
         <h3>{{ entry['title'] }}</h3>
         <p>{{ entry['text'] }}</p>
+        <p>{{ entry['price'] }}</p>
+        <p>{{ entry['timestamp'] }}</p>
 
         <!-- TODO: Add Edit link -->
-         <a href="{{ url_for('edit', id=entry['id']) }}"><button style="background-color: lightblue;">edit</button></a>
+         <a href="{{ url_for('edit', id=entry['id']) }}"><button style="background-color: rgb(111, 131, 137);">edit bill</button></a>
 
         <!-- TODO: Add Delete link -->
-        <a href="{{ url_for('delete', id=entry['id']) }}"><button style="background-color: indianred;">delete</button></a>
+        <a href="{{ url_for('delete', id=entry['id']) }}"><button style="background-color: rgb(146, 59, 59);">delete bill</button></a>
 
-        <a href="{{ url_for('gamble', id=entry['id']) }}"><button style="background-color: rgb(81, 255, 0);">gamble</button></a>
+        <a href="{{ url_for('gamble', id=entry['id']) }}"><button style="background-color: rgb(53, 102, 30);">gamble bill</button></a>
 
     </div>
     <hr>
@@ -34,7 +37,7 @@
 <!-- TODO: If no entries exist, display a message like: -->
 {% if entries|length == 0 %}
     <div>
-        <p>"No entries yet!"</p>
+        <p>"No bills yet!"</p>
     
     </div>
     <hr>
